@@ -178,11 +178,11 @@ public class AuthManagementController : ControllerBase
         user.RefreshToken = newRefreshToken;
         await _userManager.UpdateAsync(user);
 
-        return new ObjectResult(new
+        return Ok(new LoginRequestResponse()
         {
-            accessToken = newAccessToken,
-            refreshToken = newRefreshToken
-
+            Token = newAccessToken,
+            Result = true,
+            RefreshToken = newRefreshToken
         });
 
     }
